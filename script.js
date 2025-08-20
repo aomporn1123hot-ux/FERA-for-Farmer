@@ -8,12 +8,16 @@ auth.signInAnonymously().catch(console.error);
 // ตรวจสอบผู้ใช้ admin
 auth.onAuthStateChanged(user => {
   if (!user) return;
-  const adminUID = "YOUR_ADMIN_UID"; // ใส่ UID ของคุณจริง ๆ
+
+  const adminUID = "YOUR_ADMIN_UID";
   if(user.uid === adminUID){
     document.getElementById("adminPage").style.display = "block";
-    loadData(); // เรียกฟังก์ชันสร้างตาราง+กราฟ
+    loadData();
   }
-})
+
+  // ให้ผู้ใช้ทั่วไปเริ่มประเมินได้เลย
+  document.getElementById("startButton").disabled = false;
+});
 const pages = document.querySelectorAll(".page");
 let currentPageIndex = 0;
 
