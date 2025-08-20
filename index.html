@@ -12,7 +12,7 @@
     <div class="page active" id="introPage">
       <img src="เครื่องมือ.png" alt="เครื่องมือ" class="intro-img">
       <div class="nav-buttons">
-        <button type="button" class="start-btn" onclick="startAssessment()" disabled>เริ่มการประเมิน</button>
+        <button type="button" class="start-btn" onclick="startAssessment()">เริ่มการประเมิน</button>
       </div>
     </div>
 
@@ -70,32 +70,7 @@
     </div>
 
   </form>
-  
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDf0D2GLLDHoAVX4zq-tLuVocSmsrFhs38",
-    authDomain: "fera-2215e.firebaseapp.com",
-    databaseURL: "https://fera-2215e-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "fera-2215e",
-    storageBucket: "fera-2215e.appspot.com",
-    messagingSenderId: "810225127285",
-    appId: "1:810225127285:web:fa87166d4e3e4770670d3c"
-  };
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-  const auth = firebase.auth();
-
-  // ล็อกอินแบบ Anonymous
-  auth.signInAnonymously().catch(console.error);
-
-  // ให้ปุ่มเริ่มประเมินใช้ได้ทันที
-  auth.onAuthStateChanged(user => {
-    if (!user) return;
-    document.querySelector(".start-btn").disabled = false;
-  });
-</script>
-  
   <script src="script.js"></script>
 </body>
 </html>
