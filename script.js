@@ -1,3 +1,19 @@
+// Firebase init
+const auth = firebase.auth();
+const db = firebase.database();
+
+// ล็อกอินแบบ Anonymous
+auth.signInAnonymously().catch(console.error);
+
+// ตรวจสอบผู้ใช้ admin
+auth.onAuthStateChanged(user => {
+  if (!user) return;
+  const adminUID = "YOUR_ADMIN_UID"; // ใส่ UID ของคุณจริง ๆ
+  if(user.uid === adminUID){
+    document.getElementById("adminPage").style.display = "block";
+    loadData(); // เรียกฟังก์ชันสร้างตาราง+กราฟ
+  }
+})
 const pages = document.querySelectorAll(".page");
 let currentPageIndex = 0;
 
@@ -209,6 +225,3 @@ function loadData() {
     });
   });
 }
-
-// เรียกฟังก์ชันตอนโหลดหน้า
-window.onload = loadData;
