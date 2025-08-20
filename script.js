@@ -101,40 +101,18 @@ function nextLowerTimePage() {
     </div>`;
   showPage(4);
 }
-function collectAnswersForFirebase() {
-  const getVal = name => document.querySelector(`input[name="${name}"]:checked`)?.value || "";
 
-  return {
-    upperPosture: getVal("upperPosture"),
-    upperTime: getVal("upperTime"),
-    lowerPosture: getVal("lowerPosture"),
-    lowerTime: getVal("lowerTime"),
-    force: getVal("force"),
-    repetition: getVal("repetition"),
-    twist: getVal("twist"),
-    timestamp: Date.now()
-  };
-}
-function sendToFirebase(data) {
-  const answersRef = db.ref("assessments"); // โฟลเดอร์ใน Realtime Database
-  answersRef.push(data, error => {
-    if(error) {
-      console.error("เกิดข้อผิดพลาดในการบันทึก:", error);
-    } else {
-      console.log("ส่งข้อมูลเรียบร้อย:", data);
-    }
-  });
-}
+// ประมวลผล → ผลลัพธ์
 function calculateResult() {
-  // ส่งข้อมูลไป Firebase
-  const answers = collectAnswersForFirebase();
-  sendToFirebase(answers);
-
-  // ฟังก์ชันเดิมคำนวณคะแนนและแสดงผล
   const getVal = name => parseInt(document.querySelector(`input[name="${name}"]:checked`)?.value || 0);
 
-  const upperMap = {1:[0,0,1,2],2:[0,0,1,2],3:[1,2,3],4:[1,2,3],5:[2,3],6:[2,3],7:[2,3],8:[3],9:[3],10:[3]};
-  const lowerMap = {1:[1,2,3],2:[2,3],3:[3],4:[3],5:[3],6:[2,3],7:[2,3],8:[2,3]};
+  const upperMap = {
+    1: [0,0,1,2], 2: [0,0,1,2], 3: [1,2,3], 4: [1,2,3],
+    5: [2,3], 6: [2,3], 7: [2,3], 8: [3], 9: [3], 10: [3]
+  };
+  const lowerMap = {
+    1:[1,2,3],2:[2,3],3:[3],4:[3],5:[3],6:[2,3],7:[2,3],8:[2,3]
+  };
 
   const upPosture = getVal("upperPosture");
   const ut = getVal("upperTime");
