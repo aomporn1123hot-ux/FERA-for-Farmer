@@ -70,17 +70,14 @@
     </div>
 
   </form>
+
+<!-- หน้าแสดงตารางและกราฟ สำหรับผู้สร้าง -->
+<div class="page" id="adminPage" style="display:none;">
+  <h2>สรุปข้อมูลทั้งหมด (Admin)</h2>
+  <div id="tableContainer"></div>
+  <canvas id="chart" width="400" height="200"></canvas>
+</div>
   
-  <!-- ตารางข้อมูล -->
-<div id="tableContainer"></div>
-
-<!-- กราฟ (ใช้ Chart.js) -->
-<canvas id="chart" width="400" height="200"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
-
 <script>
   const firebaseConfig = {
     apiKey: "AIzaSyDf0D2GLLDHoAVX4zq-tLuVocSmsrFhs38",
