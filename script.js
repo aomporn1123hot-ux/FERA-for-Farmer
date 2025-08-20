@@ -126,11 +126,6 @@ function sendToFirebase(data) {
   });
 }
 function calculateResult() {
-  // ส่งข้อมูลไป Firebase
-  const answers = collectAnswersForFirebase();
-  sendToFirebase(answers);
-
-  // ฟังก์ชันเดิมคำนวณคะแนนและแสดงผล
   const getVal = name => parseInt(document.querySelector(`input[name="${name}"]:checked`)?.value || 0);
 
   const upperMap = {1:[0,0,1,2],2:[0,0,1,2],3:[1,2,3],4:[1,2,3],5:[2,3],6:[2,3],7:[2,3],8:[3],9:[3],10:[3]};
@@ -155,6 +150,14 @@ function calculateResult() {
   else if(total<=14){ level="ระดับสูง"; image="ความเสี่ยงสูง.png"; }
   else{ level="ระดับสูงมาก"; image="ความเสี่ยงสูงมาก.png"; }
 
+  // ✨ รวมคำตอบ + ผลลัพธ์ก่อนส่ง Firebase
+  const answers = collectAnswersForFirebase();
+  answers.totalScore = total;
+  answers.level = level;
+
+  sendToFirebase(answers);
+
+  // แสดงผลบนหน้าเว็บ
   document.getElementById("resultText").textContent = `คะแนนรวม: ${total} (${level})`;
   document.getElementById("resultImage").src = image;
   showPage(6);
