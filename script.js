@@ -1,23 +1,3 @@
-// Firebase init
-const auth = firebase.auth();
-const db = firebase.database();
-
-// ล็อกอินแบบ Anonymous
-auth.signInAnonymously().catch(console.error);
-
-// ตรวจสอบผู้ใช้ admin
-auth.onAuthStateChanged(user => {
-  if (!user) return;
-
-  const adminUID = "YOUR_ADMIN_UID";
-  if(user.uid === adminUID){
-    document.getElementById("adminPage").style.display = "block";
-    loadData();
-  }
-
-  // ให้ผู้ใช้ทั่วไปเริ่มประเมินได้เลย
-  document.getElementById("startButton").disabled = false;
-});
 const pages = document.querySelectorAll(".page");
 let currentPageIndex = 0;
 
