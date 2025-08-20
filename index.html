@@ -88,6 +88,13 @@
 
   // ล็อกอินแบบ Anonymous
   auth.signInAnonymously().catch(console.error);
+
+  // ให้ปุ่มเริ่มประเมินใช้ได้ทันที
+  auth.onAuthStateChanged(user => {
+    if (!user) return;
+    document.querySelector(".start-btn").disabled = false;
+  });
+</script>
   
   <script src="script.js"></script>
 </body>
