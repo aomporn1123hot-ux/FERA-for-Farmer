@@ -12,7 +12,7 @@
     <div class="page active" id="introPage">
       <img src="เครื่องมือ.png" alt="เครื่องมือ" class="intro-img">
       <div class="nav-buttons">
-        <button type="button" class="start-btn" onclick="startAssessment()">เริ่มการประเมิน</button>
+        <button type="button" class="start-btn" onclick="startAssessment()" disabled>เริ่มการประเมิน</button>
       </div>
     </div>
 
@@ -88,6 +88,29 @@
 
   // ล็อกอินแบบ Anonymous
   auth.signInAnonymously().catch(console.error);
+  <script>
+  const firebaseConfig = { ... };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+  const auth = firebase.auth();
+
+  // ล็อกอินแบบ Anonymous
+  auth.signInAnonymously().catch(console.error);
+
+  // ตรวจสอบ admin และเปิดปุ่มสำหรับผู้ใช้ทั่วไป
+  auth.onAuthStateChanged(user => {
+    if (!user) return;
+
+    const adminUID = "YOUR_ADMIN_UID"; // ใส่ UID ของคุณ
+    if (user.uid === adminUID) {
+      document.getElementById("adminPage").style.display = "block";
+      loadData(); // โหลดตาราง + กราฟ สำหรับ admin
+    }
+
+    // สำหรับผู้ใช้ทั่วไป ให้เริ่มประเมินได้ทันที
+    document.querySelector(".start-btn").disabled = false;
+  });
 </script>
   
   <script src="script.js"></script>
