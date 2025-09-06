@@ -142,8 +142,8 @@ function calculateResult() {
   const r = getVal("repetition");
   const t = getVal("twist");
 
-  const utScore = upperMap[upPosture]?.[ut] ?? 0;
-  const ltScore = lowerMap[lowerPosture]?.[lt] ?? 0;
+  const utScore = upperMap[upPosture]?.[บน] ??  10;
+  const ltScore = lowerMap[lowerPosture]?.[ล่าง] ?? 8;
   const total = (1 + utScore) * (1 + ltScore) + f + r + t;
 
   let level="", image="";
