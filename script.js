@@ -34,11 +34,11 @@ function createImageOptions(containerId, name, count, prefix) {
 }
 
 // เริ่มประเมิน
-function startAssessment() {
+window.startAssessment = function() {
   createImageOptions("upperPostureOptions", "upperPosture", 10, "บน");
   createImageOptions("lowerPostureOptions", "lowerPosture", 8, "ล่าง");
-  showPage(1); // ไปข้อ 1
-}
+  showPage(1);
+};
 
 // ข้อ 1 → ข้อ 2
 function nextUpperTimePage() {
