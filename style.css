@@ -5,11 +5,20 @@ body {
   font-size: 38px;
 }
 
-.intro-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: auto;
+.intro-text {
+  max-width: 900px;
+  margin: 24px auto;
+  font-size: 32px;
+  line-height: 1.6;
+  color: #333;
+  text-align: left;
+}
+.intro-text h2 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+.intro-text ol {
+  margin-left: 40px;
 }
 
 h2 {
