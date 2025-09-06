@@ -1,118 +1,85 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <title>แบบประเมินความเสี่ยง</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FERA ประเมินความเสี่ยง</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <form id="assessmentForm">
-
-   <!-- หน้า Intro -->
-<div class="page active" id="introPage">
-  <img src="เครื่องมือ.png" alt="เครื่องมือ" class="intro-img">
-
-  <!-- ✨ คำชี้แจง -->
-  <div class="intro-text">
-    <h2><u><b>คำชี้แจง</b></u></h2>
-    <p>โปรแกรมนี้ใช้สำหรับ ประเมินความเสี่ยงจากท่าทางการทำงาน ด้วยตนเอง ตามแนวทาง FERA</p>
-    <p><b>วิธีใช้งาน</b></p>
-    <ol>
-      <li>อ่านคำถามและเลือกคำตอบที่ตรงกับท่าทางของท่านมากที่สุด</li>
-      <li>มีภาพประกอบช่วยให้ตัดสินใจได้ง่ายขึ้น</li>
-      <li>เมื่อทำครบ ระบบจะแสดงผลคะแนนและระดับความเสี่ยง</li>
-    </ol>
-    <p><i>ผลลัพธ์เป็นเพียงการประเมินเบื้องต้น เพื่อช่วยให้ท่านปรับปรุงท่าทางการทำงาน ไม่ใช่การวินิจฉัยทางการแพทย์</i></p>
-  </div>
-
-  <div class="nav-buttons">
+  <!-- หน้าแนะนำ -->
+  <div class="page active" id="introPage">
+    <img src="เครื่องมือ.png" alt="FERA Tool" class="intro-img"/>
+    <div class="intro-text">
+      <h2><u><b>คำชี้แจง</b></u></h2>
+      <p>โปรแกรมนี้ใช้สำหรับ ประเมินความเสี่ยงจากท่าทางการทำงาน ด้วยตนเอง ตามแนวทาง FERA</p>
+      <p><b>วิธีใช้งาน</b></p>
+      <ol>
+        <li>อ่านคำถามและเลือกคำตอบที่ตรงกับท่าทางของท่านมากที่สุด</li>
+        <li>มีภาพประกอบช่วยให้ตัดสินใจได้ง่ายขึ้น</li>
+        <li>เมื่อทำครบ ระบบจะแสดงผลคะแนนและระดับความเสี่ยง</li>
+      </ol>
+      <p><i>ผลลัพธ์เป็นเพียงการประเมินเบื้องต้น เพื่อช่วยให้คุณปรับปรุงท่าทางการทำงาน ไม่ใช่การวินิจฉัยทางการแพทย์</i></p>
+    </div>
     <button type="button" class="start-btn" onclick="startAssessment()">เริ่มการประเมิน</button>
   </div>
-</div>
 
-<!-- หน้า 1: ข้อ 1 -->
-<div class="page" id="page1">
-  <h2>ข้อ1. ขณะทำงาน ศีรษะ คอ ไหล่ หลังส่วนบน แขน มือและข้อมือ ของท่านสอดคล้องกับท่าใดมากที่สุด</h2>
-  <div id="upperPostureOptions" class="image-grid"></div>
-  <div class="nav-buttons">
-    <button type="button" onclick="nextUpperTimePage()">ถัดไป</button>
+  <!-- ข้อ 1 -->
+  <div class="page" id="page1">
+    <h2>ข้อ1. ประเมินส่วนบน (คอ ไหล่ แขน มือ และหลังส่วนบน)</h2>
+    <div id="upperPostureOptions"></div>
+    <button onclick="nextUpperTimePage()">ถัดไป</button>
   </div>
-</div>
 
-<!-- หน้า 2: ข้อ 2 -->
-<div class="page" id="page2"></div>
-
-<!-- หน้า 3: ข้อ 3 -->
-<div class="page" id="page3">
-  <h2>ข้อ3. ขณะทำงาน หลังส่วนล่าง เข่า ขาและเท้า ของท่านสอดคล้องกับท่าใดมากที่สุด</h2>
-  <div id="lowerPostureOptions" class="image-grid"></div>
-  <div class="nav-buttons">
-    <button type="button" onclick="prevPage()">ย้อนกลับ</button>
-    <button type="button" onclick="nextLowerTimePage()">ถัดไป</button>
+  <!-- ข้อ 2 -->
+  <div class="page" id="page2">
+    <h2>ข้อ2. ระยะเวลาที่ทำงานในท่าดังกล่าว (ส่วนบน)</h2>
+    <div id="upperTimeOptions"></div>
+    <button onclick="nextLowerPosturePage()">ถัดไป</button>
   </div>
-</div>
 
-<!-- หน้า 4: ข้อ 4 -->
-<div class="page" id="page4"></div>
-
-<!-- หน้า 5: ข้อ 5-7 -->
-<div class="page" id="page5">
-  <h2>ข้อ5. ขณะทำงาน ท่านต้องใช้แรงมากน้อยเพียงใด</h2>
-  <label><input type="radio" name="force" value="1"> น้อยกว่า 5 กิโลกรัม</label><br>
-  <label><input type="radio" name="force" value="2"> 5–10 กิโลกรัม</label><br>
-  <label><input type="radio" name="force" value="3"> มากกว่า 10 กิโลกรัม</label><br>
-
-  <h2>ข้อ6. ลักษณะงานของท่านต้องทำท่าซ้ำๆ มากน้อยเพียงใด</h2>
-  <label><input type="radio" name="repetition" value="1"> มากกว่า 4 ครั้งใน 1 นาที</label><br>
-  <label><input type="radio" name="repetition" value="0"> น้อยกว่า 4 ครั้งใน 1 นาที</label><br>
-
-  <h2>ข้อ7. ในการทำงาน ท่านมีการบิดหรือหมุนข้อมือ/คอ หรือไม่</h2>
-  <label><input type="radio" name="twist" value="1"> ใช่ มีการบิด/หมุน ข้อมือหรือคอ</label><br>
-  <label><input type="radio" name="twist" value="0"> ไม่ ไม่มีการบิด/หมุน</label><br>
-
-  <div class="nav-buttons">
-    <button type="button" onclick="prevPage()">ย้อนกลับ</button>
-    <button type="button" onclick="calculateResult()">ประมวลผล</button>
+  <!-- ข้อ 3 -->
+  <div class="page" id="page3">
+    <h2>ข้อ3. ประเมินส่วนล่าง (หลังส่วนล่าง การย่อเข่า ขา และเท้า)</h2>
+    <div id="lowerPostureOptions"></div>
+    <button onclick="nextLowerTimePage()">ถัดไป</button>
   </div>
-</div>
-    
-    <!-- หน้า 6: ผลลัพธ์ -->
-    <div class="page" id="page6">
-      <h2>ผลการประเมิน</h2>
-      <p id="resultText"></p>
-      <img id="resultImage" src="" alt="ผลการประเมิน">
-    </div>
 
-  </form>
-  
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  <!-- ข้อ 4 -->
+  <div class="page" id="page4">
+    <h2>ข้อ4. ระยะเวลาที่ทำงานในท่าดังกล่าว (ส่วนล่าง)</h2>
+    <div id="lowerTimeOptions"></div>
+    <button onclick="nextForcePage()">ถัดไป</button>
+  </div>
 
-  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
+  <!-- ข้อ 5 -->
+  <div class="page" id="page5">
+    <h2>ข้อ5. การออกแรง</h2>
+    <div id="forceOptions"></div>
+    <button onclick="nextRepetitionPage()">ถัดไป</button>
+  </div>
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDf0D2GLLDHoAVX4zq-tLuVocSmsrFhs38",
-    authDomain: "fera-2215e.firebaseapp.com",
-    databaseURL: "https://fera-2215e-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "fera-2215e",
-    storageBucket: "fera-2215e.appspot.com",
-    messagingSenderId: "810225127285",
-    appId: "1:810225127285:web:fa87166d4e3e4770670d3c"
-  };
+  <!-- ข้อ 6 -->
+  <div class="page" id="page6">
+    <h2>ข้อ6. การทำงานซ้ำๆ</h2>
+    <div id="repetitionOptions"></div>
+    <button onclick="nextTwistPage()">ถัดไป</button>
+  </div>
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-  const auth = firebase.auth();
+  <!-- ข้อ 7 -->
+  <div class="page" id="page7">
+    <h2>ข้อ7. การบิด/หมุน</h2>
+    <div id="twistOptions"></div>
+    <button onclick="showResult()">แสดงผล</button>
+  </div>
 
-  // ล็อกอินแบบ Anonymous
-  auth.signInAnonymously().catch(console.error);
-</script>
-  
+  <!-- หน้าผลลัพธ์ -->
+  <div class="page" id="resultPage">
+    <h2>ผลการประเมิน</h2>
+    <div id="result"></div>
+    <button onclick="restart()">ทำแบบประเมินใหม่</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
