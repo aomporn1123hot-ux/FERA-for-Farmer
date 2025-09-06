@@ -102,6 +102,7 @@ function nextLowerTimePage() {
   showPage(4);
 }
 
+// เก็บคำตอบ
 function collectAnswersForFirebase() {
   const getVal = name => document.querySelector(`input[name="${name}"]:checked`)?.value || "";
 
@@ -117,6 +118,7 @@ function collectAnswersForFirebase() {
   };
 }
 
+// ส่งข้อมูลไป Firebase
 function sendToFirebase(data) {
   const answersRef = db.ref("assessments"); // โฟลเดอร์ใน Realtime Database
   answersRef.push(data, error => {
@@ -128,6 +130,7 @@ function sendToFirebase(data) {
   });
 }
 
+// คำนวณผลลัพธ์
 function calculateResult() {
   const getVal = name => parseInt(document.querySelector(`input[name="${name}"]:checked`)?.value || 0);
 
@@ -142,8 +145,8 @@ function calculateResult() {
   const r = getVal("repetition");
   const t = getVal("twist");
 
-  const utScore = upperMap[upPosture]?.[บน] ??  10;
-  const ltScore = lowerMap[lowerPosture]?.[ล่าง] ?? 8;
+  const utScore = upperMap[upPosture]?.[ut] ?? 0;
+  const ltScore = lowerMap[lowerPosture]?.[lt] ?? 0;
   const total = (1 + utScore) * (1 + ltScore) + f + r + t;
 
   let level="", image="";
