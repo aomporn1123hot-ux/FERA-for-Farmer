@@ -42,8 +42,10 @@ function startAssessment() {
 
 // ข้อ 1 → ข้อ 2
 function nextUpperTimePage() {
-  const selected = document.querySelector('input[name="upperPosture"]:checked');
-  if (!selected) return alert("กรุณาเลือกท่าทางส่วนบน");
+  ...
+  const container = document.getElementById("page2");
+  // ✨ เปลี่ยนข้อความ h2
+  container.innerHTML = `<h2>ข้อ2. ระยะเวลาที่ทำงานในท่าดังกล่าว (ส่วนบน)</h2>`;
 
   const val = parseInt(selected.value);
   const labels = {
@@ -74,8 +76,10 @@ function nextUpperTimePage() {
 
 // ข้อ 3 → ข้อ 4
 function nextLowerTimePage() {
-  const selected = document.querySelector('input[name="lowerPosture"]:checked');
-  if (!selected) return alert("กรุณาเลือกท่าทางส่วนล่าง");
+  ...
+  const container = document.getElementById("page4");
+  // ✨ เปลี่ยนข้อความ h2
+  container.innerHTML = `<h2>ข้อ4. ระยะเวลาที่ทำงานในท่าดังกล่าว (ส่วนล่าง)</h2>`;
 
   const val = parseInt(selected.value);
   const labels = {
