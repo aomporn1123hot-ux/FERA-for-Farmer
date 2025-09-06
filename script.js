@@ -43,9 +43,8 @@ function startAssessment() {
 // ข้อ 1 → ข้อ 2
 function nextUpperTimePage() {
   ...
-  const container = document.getElementById("page2");
-  // ✨ เปลี่ยนข้อความ h2
-  container.innerHTML = `<h2>ข้อ2. ระยะเวลาที่ทำงานในท่าดังกล่าว (ส่วนบน)</h2>`;
+const container = document.getElementById("page2");
+container.innerHTML = `<h2>ข้อ2. ระยะเวลาที่ทำงานในท่าดังกล่าว (ส่วนบน)</h2>`;
 
   const val = parseInt(selected.value);
   const labels = {
@@ -78,8 +77,7 @@ function nextUpperTimePage() {
 function nextLowerTimePage() {
   ...
   const container = document.getElementById("page4");
-  // ✨ เปลี่ยนข้อความ h2
-  container.innerHTML = `<h2>ข้อ4. ระยะเวลาที่ทำงานในท่าดังกล่าว (ส่วนล่าง)</h2>`;
+container.innerHTML = `<h2>ข้อ4. ระยะเวลาที่ทำงานในท่าดังกล่าว (ส่วนล่าง)</h2>`;
 
   const val = parseInt(selected.value);
   const labels = {
