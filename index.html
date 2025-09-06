@@ -8,60 +8,74 @@
 <body>
   <form id="assessmentForm">
 
-    <!-- หน้า Intro -->
-    <div class="page active" id="introPage">
-      <img src="เครื่องมือ.png" alt="เครื่องมือ" class="intro-img">
-      <div class="nav-buttons">
-        <button type="button" class="start-btn" onclick="startAssessment()">เริ่มการประเมิน</button>
-      </div>
-    </div>
+   <!-- หน้า Intro -->
+<div class="page active" id="introPage">
+  <img src="เครื่องมือ.png" alt="เครื่องมือ" class="intro-img">
 
-    <!-- หน้า 1: ข้อ 1 -->
-    <div class="page" id="page1">
-      <h2>ข้อ 1: ประเมินส่วนบน (คอ ไหล่ แขน มือ และหลังส่วนบน)</h2>
-      <div id="upperPostureOptions" class="image-grid"></div>
-      <div class="nav-buttons">
-        <button type="button" onclick="nextUpperTimePage()">ถัดไป</button>
-      </div>
-    </div>
+  <!-- ✨ คำชี้แจง -->
+  <div class="intro-text">
+    <h2><u><b>คำชี้แจง</b></u></h2>
+    <p>โปรแกรมนี้ใช้สำหรับ ประเมินความเสี่ยงจากท่าทางการทำงาน ด้วยตนเอง ตามแนวทาง FERA</p>
+    <p><b>วิธีใช้งาน</b></p>
+    <ol>
+      <li>อ่านคำถามและเลือกคำตอบที่ตรงกับท่าทางของท่านมากที่สุด</li>
+      <li>มีภาพประกอบช่วยให้ตัดสินใจได้ง่ายขึ้น</li>
+      <li>เมื่อทำครบ ระบบจะแสดงผลคะแนนและระดับความเสี่ยง</li>
+    </ol>
+    <p><i>ผลลัพธ์เป็นเพียงการประเมินเบื้องต้น เพื่อช่วยให้คุณปรับปรุงท่าทางการทำงาน ไม่ใช่การวินิจฉัยทางการแพทย์</i></p>
+  </div>
 
-    <!-- หน้า 2: ข้อ 2 -->
-    <div class="page" id="page2"></div>
+  <div class="nav-buttons">
+    <button type="button" class="start-btn" onclick="startAssessment()">เริ่มการประเมิน</button>
+  </div>
+</div>
 
-    <!-- หน้า 3: ข้อ 3 -->
-    <div class="page" id="page3">
-      <h2>ข้อ 3: ประเมินส่วนล่าง (หลังส่วนล่าง ขา และเท้า)</h2>
-      <div id="lowerPostureOptions" class="image-grid"></div>
-      <div class="nav-buttons">
-        <button type="button" onclick="prevPage()">ย้อนกลับ</button>
-        <button type="button" onclick="nextLowerTimePage()">ถัดไป</button>
-      </div>
-    </div>
+<!-- หน้า 1: ข้อ 1 -->
+<div class="page" id="page1">
+  <h2>ข้อ1. ขณะทำงาน ศีรษะ คอ ไหล่ หลังส่วนบน แขน มือและข้อมือ ของท่านสอดคล้องกับท่าใดมากที่สุด</h2>
+  <div id="upperPostureOptions" class="image-grid"></div>
+  <div class="nav-buttons">
+    <button type="button" onclick="nextUpperTimePage()">ถัดไป</button>
+  </div>
+</div>
 
-    <!-- หน้า 4: ข้อ 4 -->
-    <div class="page" id="page4"></div>
+<!-- หน้า 2: ข้อ 2 -->
+<div class="page" id="page2"></div>
 
-    <!-- หน้า 5: ข้อ 5-7 -->
-    <div class="page" id="page5">
-      <h2>ข้อ 5: การออกแรง</h2>
-      <label><input type="radio" name="force" value="1"> น้อยกว่า 5 กิโลกรัม</label><br>
-      <label><input type="radio" name="force" value="2"> 5–10 กิโลกรัม</label><br>
-      <label><input type="radio" name="force" value="3"> มากกว่า 10 กิโลกรัม</label><br>
+<!-- หน้า 3: ข้อ 3 -->
+<div class="page" id="page3">
+  <h2>ข้อ3. ขณะทำงาน หลังส่วนล่าง เข่า ขาและเท้า ของท่านสอดคล้องกับท่าใดมากที่สุด</h2>
+  <div id="lowerPostureOptions" class="image-grid"></div>
+  <div class="nav-buttons">
+    <button type="button" onclick="prevPage()">ย้อนกลับ</button>
+    <button type="button" onclick="nextLowerTimePage()">ถัดไป</button>
+  </div>
+</div>
 
-      <h2>ข้อ 6: การทำงานซ้ำ ๆ</h2>
-      <label><input type="radio" name="repetition" value="1"> มากกว่า 4 ครั้งใน 1 นาที</label><br>
-      <label><input type="radio" name="repetition" value="0"> น้อยกว่า 4 ครั้งใน 1 นาที</label><br>
+<!-- หน้า 4: ข้อ 4 -->
+<div class="page" id="page4"></div>
 
-      <h2>ข้อ 7: การบิด/หมุน</h2>
-      <label><input type="radio" name="twist" value="1"> มีการบิด/หมุน ข้อมือหรือคอ</label><br>
-      <label><input type="radio" name="twist" value="0"> ไม่มีการบิด/หมุน</label><br>
+<!-- หน้า 5: ข้อ 5-7 -->
+<div class="page" id="page5">
+  <h2>ข้อ5. ขณะทำงาน ท่านต้องใช้แรงมากน้อยเพียงใด</h2>
+  <label><input type="radio" name="force" value="1"> น้อยกว่า 5 กิโลกรัม</label><br>
+  <label><input type="radio" name="force" value="2"> 5–10 กิโลกรัม</label><br>
+  <label><input type="radio" name="force" value="3"> มากกว่า 10 กิโลกรัม</label><br>
 
-      <div class="nav-buttons">
-        <button type="button" onclick="prevPage()">ย้อนกลับ</button>
-        <button type="button" onclick="calculateResult()">ประมวลผล</button>
-      </div>
-    </div>
+  <h2>ข้อ6. ลักษณะงานของท่านต้องทำท่าซ้ำๆ มากน้อยเพียงใด</h2>
+  <label><input type="radio" name="repetition" value="1"> มากกว่า 4 ครั้งใน 1 นาที</label><br>
+  <label><input type="radio" name="repetition" value="0"> น้อยกว่า 4 ครั้งใน 1 นาที</label><br>
 
+  <h2>ข้อ7. ในการทำงาน ท่านมีการบิดหรือหมุนข้อมือ/คอ หรือไม่</h2>
+  <label><input type="radio" name="twist" value="1"> ใช่ มีการบิด/หมุน ข้อมือหรือคอ</label><br>
+  <label><input type="radio" name="twist" value="0"> ไม่ ไม่มีการบิด/หมุน</label><br>
+
+  <div class="nav-buttons">
+    <button type="button" onclick="prevPage()">ย้อนกลับ</button>
+    <button type="button" onclick="calculateResult()">ประมวลผล</button>
+  </div>
+</div>
+    
     <!-- หน้า 6: ผลลัพธ์ -->
     <div class="page" id="page6">
       <h2>ผลการประเมิน</h2>
