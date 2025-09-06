@@ -1,8 +1,16 @@
 body {
   font-family: "sans-serif";
-  margin: 16px;
+  margin: 0;       /* ลบ margin รอบตัว body */
+  padding: 0;      /* ลบ padding รอบตัว body */
   background-color: #f9f9f9;
   font-size: 38px;
+}
+
+.intro-img {
+  width: 100vw;    /* ใช้เต็มความกว้างหน้าจอ */
+  height: auto;
+  display: block;
+  object-fit: cover; /* ครอบเต็มกรอบโดยไม่เสียอัตราส่วน */
 }
 
 .intro-text {
