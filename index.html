@@ -11,12 +11,9 @@
     <!-- หน้า Intro -->
     <div class="page active" id="introPage">
       <img src="เครื่องมือ.png" alt="เครื่องมือ" class="intro-img">
-      
       <div class="intro-text">
         <h2><u><b>คำชี้แจง</b></u></h2>
-        <p>
-          โปรแกรมนี้ใช้สำหรับ <b>ประเมินความเสี่ยงจากท่าทางการทำงาน</b> ด้วยตนเอง ตามแนวทาง FERA
-        </p>
+        <p>โปรแกรมนี้ใช้สำหรับ <b>ประเมินความเสี่ยงจากท่าทางการทำงาน</b> ด้วยตนเอง ตามแนวทาง FERA</p>
         <h3>วิธีใช้งาน</h3>
         <ol>
           <li>อ่านคำถามและเลือกคำตอบที่ตรงกับท่าทางของท่านมากที่สุด</li>
@@ -24,11 +21,10 @@
           <li>เมื่อทำครบ ระบบจะแสดงผลคะแนนและระดับความเสี่ยง</li>
         </ol>
         <p class="note">
-          ผลลัพธ์เป็นเพียง <b>การประเมินเบื้องต้น</b> เพื่อช่วยให้ท่านปรับปรุงท่าทางการทำงาน <br>
+          ผลลัพธ์เป็นเพียง <b>การประเมินเบื้องต้น</b> เพื่อช่วยให้ท่านปรับปรุงท่าทางการทำงาน<br>
           ไม่ใช่การวินิจฉัยทางการแพทย์
         </p>
       </div>
-
       <div class="nav-buttons">
         <button type="button" class="start-btn" onclick="startAssessment()">เริ่มการประเมิน</button>
       </div>
@@ -96,37 +92,12 @@
     </div>
 
   </form>
-  
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDf0D2GLLDHoAVX4zq-tLuVocSmsrFhs38",
-      authDomain: "fera-2215e.firebaseapp.com",
-      databaseURL: "https://fera-2215e-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "fera-2215e",
-      storageBucket: "fera-2215e.appspot.com",
-      messagingSenderId: "810225127285",
-      appId: "1:810225127285:web:fa87166d4e3e4770670d3c"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
-    const auth = firebase.auth();
-    auth.signInAnonymously().catch(console.error);
-
-    function goToFeedback() {
-      window.location.href = "https://aomporn1123hot-ux.github.io/Like/";
-    }
-  </script>
-  
   <script src="script.js"></script>
 </body>
 </html>
