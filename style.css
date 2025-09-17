@@ -137,3 +137,10 @@ button {
   margin: 8px auto;
   max-height: 1080px;
 }
+
+.feedback-text {
+  font-size: 28px;
+  margin: 16px auto;
+  text-align: center;
+  color: #2a4d4d;
+}
