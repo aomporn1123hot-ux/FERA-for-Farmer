@@ -146,15 +146,19 @@ button {
   margin: 16px auto;
 }
 
-/* ปุ่มความพึงพอใจสีเขียวอ่อน/สดใส */
+/* ปุ่มความพึงพอใจสีเขียวธรรมดา */
 button.feedback-btn {
-  background-color: #7CFC00; /* สีเขียวสดใส */
+  background-color: green; /* สีเขียวธรรมดา */
   color: white;
-  font-size: 44px;  /* ขนาดใหญ่ขึ้น */
+  font-size: 44px;  /* ขนาดใหญ่ */
   padding: 24px 48px;
   border-radius: 12px;
   font-weight: bold;
   transition: all 0.2s ease;
+}
+
+button.feedback-btn:hover {
+  background-color: darkgreen; /* เขียวเข้มเมื่อโฮเวอร์ */
 }
 
 button.feedback-btn:hover {
