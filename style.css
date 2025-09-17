@@ -138,10 +138,25 @@ button {
   max-height: 1080px; 
 }
 
-/* ปรับขนาดข้อความคะแนนรวมและข้อความข้างล่างภาพให้เท่ากัน */
+/* ขนาดข้อความคะแนนรวมและข้อความข้างล่างภาพ */
 #resultText, .feedback-text {
   font-size: 42px;  
   text-align: center;
   color: #2a4d4d;
   margin: 16px auto;
+}
+
+/* ปุ่มความพึงพอใจสีเขียวอ่อน/สดใส */
+button.feedback-btn {
+  background-color: #7CFC00; /* สีเขียวสดใส */
+  color: white;
+  font-size: 44px;  /* ขนาดใหญ่ขึ้น */
+  padding: 24px 48px;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+button.feedback-btn:hover {
+  background-color: #32CD32; /* เขียวเข้มเมื่อโฮเวอร์ */
 }
