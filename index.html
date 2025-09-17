@@ -84,38 +84,48 @@
     <div class="page" id="page6">
       <h2>ผลการประเมิน</h2>
       <p id="resultText"></p>
-      <img id="resultImage" src="" alt="ผลการประเมิน">
+      <a id="downloadLink" download>
+        <img id="resultImage" src="" alt="ผลการประเมิน">
+      </a>
+      <p class="feedback-text">
+        เพื่อช่วยพัฒนาโปรแกรมการประเมินความเสี่ยงรูปแบบออนไลน์จากท่าทางการทำงานด้วยตนเองในกลุ่มอาชีพเกษตรกรให้ดียิ่งขึ้น กรุณาให้ระดับความพึงพอใจต่อโปรแกรมนี้
+      </p>
+      <div class="nav-buttons">
+        <button type="button" onclick="goToFeedback()">📝 ความพึงพอใจ</button>
+      </div>
     </div>
 
   </form>
   
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-auth-compat.js"></script>
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDf0D2GLLDHoAVX4zq-tLuVocSmsrFhs38",
-    authDomain: "fera-2215e.firebaseapp.com",
-    databaseURL: "https://fera-2215e-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "fera-2215e",
-    storageBucket: "fera-2215e.appspot.com",
-    messagingSenderId: "810225127285",
-    appId: "1:810225127285:web:fa87166d4e3e4770670d3c"
-  };
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDf0D2GLLDHoAVX4zq-tLuVocSmsrFhs38",
+      authDomain: "fera-2215e.firebaseapp.com",
+      databaseURL: "https://fera-2215e-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fera-2215e",
+      storageBucket: "fera-2215e.appspot.com",
+      messagingSenderId: "810225127285",
+      appId: "1:810225127285:web:fa87166d4e3e4770670d3c"
+    };
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
-  const auth = firebase.auth();
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const auth = firebase.auth();
+    auth.signInAnonymously().catch(console.error);
 
-  // ล็อกอินแบบ Anonymous
-  auth.signInAnonymously().catch(console.error);
-</script>
+    function goToFeedback() {
+      window.location.href = "https://aomporn1123hot-ux.github.io/Like/";
+    }
+  </script>
   
   <script src="script.js"></script>
 </body>
