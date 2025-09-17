@@ -1,18 +1,15 @@
 const pages = document.querySelectorAll(".page");
 let currentPageIndex = 0;
 
-// แสดงหน้าปัจจุบัน
 function showPage(index) {
   currentPageIndex = index;
   pages.forEach((p, i) => p.classList.toggle("active", i === index));
 }
 
-// หน้า ก่อนหน้า
 function prevPage() {
   if (currentPageIndex > 0) showPage(currentPageIndex - 1);
 }
 
-// สร้างตัวเลือกภาพ
 function createImageOptions(containerId, name, count, prefix) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
@@ -33,27 +30,25 @@ function createImageOptions(containerId, name, count, prefix) {
   }
 }
 
-// เริ่มประเมิน
 function startAssessment() {
   createImageOptions("upperPostureOptions", "upperPosture", 10, "บน");
   createImageOptions("lowerPostureOptions", "lowerPosture", 8, "ล่าง");
-  showPage(1); // ไปข้อ 1
+  showPage(1);
 }
 
-// ข้อ 1 → ข้อ 2
 function nextUpperTimePage() {
   const selected = document.querySelector('input[name="upperPosture"]:checked');
   if (!selected) return alert("กรุณาเลือกท่าทางส่วนบน");
 
   const val = parseInt(selected.value);
   const labels = {
-    1: ["1-2 นาที", "3-7 นาที", "8-18 นาที", "17 นาที"],
-    2: ["1 นาที", "2-6 นาที", "7-13 นาที", "14 นาที"],
-    3: ["1 นาที", "2-8 นาที", "9-12 นาที"],
-    4: ["1 นาที", "2-7 นาที", "8-11 นาที"],
-    5: ["1-4 นาที", "5-12 นาที"],
-    6: ["1 นาที", "2-7 นาที"],
-    7: ["1 นาที", "2-8 นาที"],
+    1: ["1-2 นาที","3-7 นาที","8-18 นาที","17 นาที"],
+    2: ["1 นาที","2-6 นาที","7-13 นาที","14 นาที"],
+    3: ["1 นาที","2-8 นาที","9-12 นาที"],
+    4: ["1 นาที","2-7 นาที","8-11 นาที"],
+    5: ["1-4 นาที","5-12 นาที"],
+    6: ["1 นาที","2-7 นาที"],
+    7: ["1 นาที","2-8 นาที"],
     8: ["1-2 นาที"],
     9: ["1-4 นาที"],
     10: ["1-3 นาที"]
@@ -72,21 +67,20 @@ function nextUpperTimePage() {
   showPage(2);
 }
 
-// ข้อ 3 → ข้อ 4
 function nextLowerTimePage() {
   const selected = document.querySelector('input[name="lowerPosture"]:checked');
   if (!selected) return alert("กรุณาเลือกท่าทางส่วนล่าง");
 
   const val = parseInt(selected.value);
   const labels = {
-    1: ["1-10 นาที", "11-32 นาที", "33 นาที"],
-    2: ["1-11 นาที", "12 นาที"],
+    1: ["1-10 นาที","11-32 นาที","33 นาที"],
+    2: ["1-11 นาที","12 นาที"],
     3: ["1 นาที"],
     4: ["1 นาที"],
     5: ["1 นาที"],
-    6: ["1-8 นาที", "9 นาที"],
-    7: ["1-2 นาที", "3 นาที"],
-    8: ["1-3 นาที", "4 นาที"]
+    6: ["1-8 นาที","9 นาที"],
+    7: ["1-2 นาที","3 นาที"],
+    8: ["1-3 นาที","4 นาที"]
   };
 
   const container = document.getElementById("page4");
@@ -102,10 +96,8 @@ function nextLowerTimePage() {
   showPage(4);
 }
 
-// เก็บคำตอบ
 function collectAnswersForFirebase() {
   const getVal = name => document.querySelector(`input[name="${name}"]:checked`)?.value || "";
-
   return {
     upperPosture: getVal("upperPosture"),
     upperTime: getVal("upperTime"),
@@ -118,22 +110,16 @@ function collectAnswersForFirebase() {
   };
 }
 
-// ส่งข้อมูลไป Firebase
 function sendToFirebase(data) {
-  const answersRef = db.ref("assessments"); // โฟลเดอร์ใน Realtime Database
+  const answersRef = db.ref("assessments");
   answersRef.push(data, error => {
-    if(error) {
-      console.error("เกิดข้อผิดพลาดในการบันทึก:", error);
-    } else {
-      console.log("ส่งข้อมูลเรียบร้อย:", data);
-    }
+    if(error) console.error("เกิดข้อผิดพลาดในการบันทึก:", error);
+    else console.log("ส่งข้อมูลเรียบร้อย:", data);
   });
 }
 
-// คำนวณผลลัพธ์
 function calculateResult() {
   const getVal = name => parseInt(document.querySelector(`input[name="${name}"]:checked`)?.value || 0);
-
   const upperMap = {1:[0,0,1,2],2:[0,0,1,2],3:[1,2,3],4:[1,2,3],5:[2,3],6:[2,3],7:[2,3],8:[3],9:[3],10:[3]};
   const lowerMap = {1:[1,2,3],2:[2,3],3:[3],4:[3],5:[3],6:[2,3],7:[2,3],8:[2,3]};
 
@@ -147,7 +133,7 @@ function calculateResult() {
 
   const utScore = upperMap[upPosture]?.[ut] ?? 0;
   const ltScore = lowerMap[lowerPosture]?.[lt] ?? 0;
-  const total = (1 + utScore) * (1 + ltScore) + f + r + t;
+  const total = (1 + utScore)*(1 + ltScore) + f + r + t;
 
   let level="", image="";
   if(total===1){ level="ระดับยอมรับได้"; image="ยอมรับได้.png"; }
@@ -156,15 +142,9 @@ function calculateResult() {
   else if(total<=14){ level="ระดับสูง"; image="ความเสี่ยงสูง.png"; }
   else{ level="ระดับสูงมาก"; image="ความเสี่ยงสูงมาก.png"; }
 
-  // ✨ รวมคำตอบ + ผลลัพธ์ก่อนส่ง Firebase
   const answers = collectAnswersForFirebase();
   answers.totalScore = total;
   answers.level = level;
-
   sendToFirebase(answers);
 
-  // แสดงผลบนหน้าเว็บ
-  document.getElementById("resultText").textContent = `คะแนนรวม: ${total} (${level})`;
-  document.getElementById("resultImage").src = image;
-  showPage(6);
-}
+  document.getElementById("resultText").text
