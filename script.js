@@ -147,4 +147,13 @@ function calculateResult() {
   answers.level = level;
   sendToFirebase(answers);
 
-  document.getElementById("resultText").text
+  document.getElementById("resultText").textContent = `คะแนนรวม: ${total} (${level})`;
+
+  const resultImg = document.getElementById("resultImage");
+  resultImg.src = image;
+
+  const downloadLink = document.getElementById("downloadLink");
+  downloadLink.href = image;
+
+  showPage(6);
+}
